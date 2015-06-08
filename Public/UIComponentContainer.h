@@ -23,7 +23,7 @@ public:
 	void SetSelectedComponents(TArray<UUIComponent*> newVal);
 
 	bool SelectComponent(UUIComponent* component);
-	bool MoveComponents(TMap<TArray<UUIComponent*>, UUIComponentContainer*> components);
+	//bool MoveComponents(TMap<TArray<UUIComponent*>, UUIComponentContainer*> components);
 
 	void ResetSelection();
 

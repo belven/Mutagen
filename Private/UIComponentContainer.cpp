@@ -40,15 +40,15 @@ bool UUIComponentContainer::SelectComponent(UUIComponent* component){
 }
 
 
-bool UUIComponentContainer::MoveComponents(TMap<TArray<UUIComponent*>, UUIComponentContainer*> components){
-	for (auto& item : components){
-		for (UUIComponent* component : item.Key){
-			item.Value->RemoveUIComponent(component);
-			AddUIComponent(component);
-		}
-	}
-	return true;
-}
+//bool UUIComponentContainer::MoveComponents(TMap<TArray<UUIComponent*>, UUIComponentContainer*> components){
+//	for (auto& item : components){
+//		for (UUIComponent* component : item.Key){
+//			item.Value->RemoveUIComponent(component);
+//			AddUIComponent(component);
+//		}
+//	}
+//	return true;
+//}
 
 
 void UUIComponentContainer::ResetSelection(){

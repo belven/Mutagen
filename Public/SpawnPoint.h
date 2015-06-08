@@ -9,6 +9,8 @@
 #include "Engine/TargetPoint.h"
 #include "SpawnPoint.generated.h"
 
+class ABaseCharacter;
+
 UCLASS()
 class MUTAGEN_API ASpawnPoint : public ATargetPoint
 {
@@ -44,10 +46,10 @@ public:
 	UClass* GetCharacterClass();
 
 	UFUNCTION(BlueprintCallable, Category = "Spawn Point")
-		void SetCharacterClass(TSubclassOf<AMutagenCharacter> newClass);
+		void SetCharacterClass(TSubclassOf<ABaseCharacter> newClass);
 
 	UFUNCTION()
-	void EntityDied(AMutagenCharacter* entityInvolved);
+	void EntityDied(ABaseCharacter* entityInvolved);
 
 	FTimerHandle spawnTimer;
 
@@ -56,7 +58,7 @@ private:
 	bool onCooldown;
 
 	UPROPERTY(EditAnywhere, Category = "Spawn Point")
-	TSubclassOf<AMutagenCharacter> characterClass;
+	TSubclassOf<ABaseCharacter> characterClass;
 
 	UPROPERTY(VisibleAnywhere, Category = "Spawn Point")
 	UCapsuleComponent* spawnCapsule;

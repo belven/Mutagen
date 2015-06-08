@@ -8,6 +8,8 @@
 #include "Mutagen.h"
 #include "MutagenCharacter.h"
 #include "Weapon.h"
+#include "GameFramework/HUD.h"
+#include "ItemPickup.h"
 
 
 AMutagenCharacter::AMutagenCharacter(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer){
@@ -19,7 +21,7 @@ void AMutagenCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	SetCurrentHealth(GetMaxHealth());
-	}
+}
 
 
 /**
@@ -33,9 +35,9 @@ float AMutagenCharacter::TakeDamage(float Damage, struct FDamageEvent const& Dam
 		SetCurrentHealth(GetCurrentHealth() - Damage);
 
 		if (GetCurrentHealth() <= 0)
-	{
-		Died();
-	}
+		{
+			Died();
+		}
 	}
 
 	return Super::TakeDamage(Damage, DamageEvent, EventInstigator, DamageCauser);
@@ -70,8 +72,8 @@ void AMutagenCharacter::StopWeaponAttack(){
 			{
 				weapon->StopAttack();
 			}
-}
-}
+		}
+	}
 }
 
 TArray<USkill*> AMutagenCharacter::GetSkills(){
@@ -97,38 +99,7 @@ bool AMutagenCharacter::AddSkill(USkill* newSkill){
 
 
 bool AMutagenCharacter::ActivateSkill(USkill* skill){
-
-void AMutagenCharacter::SetCharacterName(FString newName)
-{
-	characterName = newName;
-}
-
-FString AMutagenCharacter::GetCharacterName()
-{
-	if (GetController())
-	{
-		// get the player name instead of the character name
-		return "Player";
-	}
-	else
-	{
-		return characterName;
-	}
-}
-
-TArray<UPassive*> AMutagenCharacter::GetPassives(){
-
-	return passives;
-}
-
-
-void AMutagenCharacter::SetPassives(TArray<UPassive*> newVal){
-
-	passives = newVal;
-}
-
-void AMutagenCharacter::Died()
-{
+	return true;
 
 }
 

@@ -34,14 +34,14 @@ void ASpawnPoint::BeginPlay(){
 	Super::BeginPlay();
 }
 
-void ASpawnPoint::EntityDied(AMutagenCharacter* entityInvolved)
+void ASpawnPoint::EntityDied(ABaseCharacter* entityInvolved)
 {
 	GetWorldTimerManager().SetTimer(spawnTimer, this, &ASpawnPoint::Spawn, GetCooldown());
 }
 
 void ASpawnPoint::Spawn()
 {
-	AMutagenCharacter* entity = GetWorld()->SpawnActor<AMutagenCharacter>(GetCharacterClass(), GetActorLocation(), GetActorRotation());
+	ABaseCharacter* entity = GetWorld()->SpawnActor<ABaseCharacter>(GetCharacterClass(), GetActorLocation(), GetActorRotation());
 	if (entity)
 	{
 		entity->OnCharacterDeathEvent.AddDynamic(this, &ASpawnPoint::EntityDied);
@@ -80,7 +80,7 @@ UClass* ASpawnPoint::GetCharacterClass()
 	return characterClass;
 }
 
-void ASpawnPoint::SetCharacterClass(TSubclassOf<AMutagenCharacter> newClass)
+void ASpawnPoint::SetCharacterClass(TSubclassOf<ABaseCharacter> newClass)
 {
 	characterClass = newClass;
 }
